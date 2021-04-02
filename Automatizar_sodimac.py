@@ -22,35 +22,31 @@ Rut = '19.638.767-6'
 Telefono = '957321093'
 
 
-def spawn_browser(n):
+def spawn_browser():
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--disable-popup-blocking")
     chrome_options.add_argument("--start-maximized")
     chrome_options.add_experimental_option("detach",True)
     driver = webdriver.Chrome(options=chrome_options)
-    if n==2:
-        driver.get("https://www.sodimac.cl/sodimac-cl/myaccount/login?successUrl=/myaccount")
-    
-    elif n==3 :
-        driver.get("https://www.sodimac.cl/sodimac-cl/myaccount/forgotpassword?isPersonal=true")
 
-    elif n==4 :
-        driver.get("https://www.sodimac.cl/sodimac-cl/myaccount/login?successUrl=/myaccount")
-    elif n==5 :
-        driver.get("https://www.sodimac.cl/sodimac-cl/myaccount/login?successUrl=/myaccount")
+    driver.get('https://www.sodimac.cl/sodimac-cl/')
+
 
     time.sleep(5)
     return driver
 
 def Registrarse():
-    driver = webdriver.Chrome('chromedriver.exe')
-    driver.get('https://www.sodimac.cl/sodimac-cl/myaccount/register/personal')
+    driver = spawn_browser()
+    time.sleep(4)
+    
 
-    correo_input = driver.find_element_by_id('testId-email')
-    correo_input.send_keys(Mail)
+    pyautogui.moveTo(1344, 185)
+    time.sleep(3)
 
-    Pass_input = driver.find_element_by_id('testId-password')
-    Pass_input.send_keys(Password)
+    pyautogui.moveTo(1307, 577)
+    time.sleep(1)
+    pyautogui.click()
+
 
     Nombre_input = driver.find_element_by_id('testId-firstName')
     Nombre_input.send_keys(Nombre)
@@ -58,44 +54,50 @@ def Registrarse():
     Apellido1_input = driver.find_element_by_id('testId-lastName')
     Apellido1_input.send_keys(Apellido1)
 
-    Apellido2_input = driver.find_element_by_id('testId-middleName')
-    Apellido2_input.send_keys(Apellido2)
-
-    dia_button = driver.find_element_by_id('testId-Dropdown-testId-date-value')
-    dia_button.click()
-
-    Dia_button = driver.find_element_by_id('testId-li-testId-DropdownList-testId-Dropdown-testId-date-dropdown-list-item-16')
-    Dia_button.click()
-
-    mes_button = driver.find_element_by_id('testId-Dropdown-testId-month-value')
-    mes_button.click()
-
-    Mes_button = driver.find_element_by_id('testId-li-testId-DropdownList-testId-Dropdown-testId-month-dropdown-list-item-5')
-    Mes_button.click()    
-
-    año_button = driver.find_element_by_id('testId-Dropdown-testId-year-value')
-    año_button.click()
- 
-    Año_button = driver.find_element_by_id('testId-li-testId-DropdownList-testId-Dropdown-testId-year-dropdown-list-item-90')
-    Año_button.click()
-
     Rut_input = driver.find_element_by_id('testId-document')
     Rut_input.send_keys(Rut)
 
     Telefono_input = driver.find_element_by_id('testId-input-phoneNumber')
     Telefono_input.send_keys(Telefono)
 
-    Terminos_button = driver.find_element_by_id('checkbox-testId-acceptTermsAndConditions')
-    Terminos_button.click()
-
-    Registrarse_button = driver.find_element_by_id('testId-btn-registration-submit')
-    Registrarse_button.click()
+    correo_input = driver.find_element_by_id('testId-email')
+    correo_input.send_keys(Mail)
 
 
+    Pass_input = driver.find_element_by_id('testId-password')
+    Pass_input.send_keys(Password)
 
-def Iniciar_Sesion(n):
+    pyautogui.moveTo(1591, 537)
+    time.sleep(1)
+    pyautogui.click()
 
-    driver = spawn_browser(n)
+    pyautogui.moveTo(790,303)
+    time.sleep(1)
+    pyautogui.click()
+
+    pyautogui.moveTo(444, 384)
+    time.sleep(1)
+    pyautogui.click()
+
+    pyautogui.moveTo(522, 437)
+    time.sleep(1)
+    pyautogui.click()
+
+
+
+
+
+def Iniciar_Sesion():
+
+    driver = spawn_browser()
+    time.sleep(3)
+    
+
+    pyautogui.moveTo(1344, 185)
+    time.sleep(1)
+    pyautogui.click()
+
+    time.sleep(2)
 
     user_input = driver.find_element_by_id('inputEmail')
     user_input.send_keys(Mail)
@@ -108,10 +110,19 @@ def Iniciar_Sesion(n):
 
 #driver.find_element_by_xpath('loginSubmit').click()
 
-def Restablecer_Contraseña(n):
+def Restablecer_Contraseña():
 
-    driver = spawn_browser(n)
-    time.sleep(2)
+    driver = spawn_browser()
+    time.sleep(4)
+
+    pyautogui.moveTo(1344, 185)
+    time.sleep(3)
+
+    pyautogui.moveTo(1354, 420)
+    time.sleep(1)
+    pyautogui.click()
+
+
     mail_recuperar = driver.find_element_by_id('forgotPassword_Email')
     mail_recuperar.send_keys(Mail)
 
@@ -119,9 +130,19 @@ def Restablecer_Contraseña(n):
 
     pyautogui.press("enter")
 
-def Modificar_Contraseña(n):
+def Modificar_Contraseña():
 
-    driver = spawn_browser(n)
+
+
+    driver = spawn_browser()
+    time.sleep(3)
+    
+
+    pyautogui.moveTo(1344, 185)
+    time.sleep(1)
+    pyautogui.click()
+
+    time.sleep(2)
 
     user_input = driver.find_element_by_id('inputEmail')
     user_input.send_keys(Mail)
@@ -131,12 +152,14 @@ def Modificar_Contraseña(n):
     time.sleep(2)
     pyautogui.press("enter")
 
-    time.sleep(2)
+    time.sleep(3)
 
-    CambiarPASS_button = driver.find_element_by_id('testId-link-updatePasswordLink')
-    CambiarPASS_button.click()
-
+    pyautogui.moveTo(279, 491)
+    time.sleep(1)
+    pyautogui.click()
     time.sleep(2)
+    
+
 
     Pass_input = driver.find_element_by_id('testId-currentPassword')
     Pass_input.send_keys(Password)
@@ -149,9 +172,18 @@ def Modificar_Contraseña(n):
     button_CambiarPass = driver.find_element_by_id('testId-btn-update-password-button')
     button_CambiarPass.click()
 
-def  Fuerza_Bruta(n):
+def  Fuerza_Bruta():
     contador=0
-    driver = spawn_browser(n)
+    driver = spawn_browser()
+    time.sleep(4)
+
+
+    pyautogui.moveTo(1344, 185)
+    time.sleep(1)
+    pyautogui.click()
+
+    time.sleep(2)
+
     while True:
         time.sleep(3)
         lst = [random.choice(string.ascii_letters + string.digits) for n in range(12)]
@@ -196,16 +228,16 @@ while True:
         Registrarse()
 
     elif n==2:
-        Iniciar_Sesion(n)
+        Iniciar_Sesion()
 
     elif n==3:
-        Restablecer_Contraseña(n)
+        Restablecer_Contraseña()
 
     elif n==4:
-        Modificar_Contraseña(n)
+        Modificar_Contraseña()
     
     elif n==5:
-        Fuerza_Bruta(n)
+        Fuerza_Bruta()
 
     elif n==6:
         break
