@@ -9,4 +9,4 @@ try:
         print(positionStr, end='')
         print('\b' * len(positionStr), end='', flush=True)
 except KeyboardInterrupt:
-    print('\n')
+    print('\n') 
