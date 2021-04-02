@@ -8,14 +8,14 @@ from selenium import webdriver
 #prueba base64 : +=n0TePeRdoN0+/
 #prueba ASCII :C0nTr@seÑ4
 #prueba ASCII extendido: ¶▲↓█§÷¹±Û¨┼Û®J■
-#prueba UTF-8 : ŵŸŹŽƓƔƕƖƗƘƙƚƛƜ, ѼѽѾѿҀҁ҂҃҄҅҆҇҈҉Ҋ , ݥݦݧݨݩݪݫݬݭݮݯݰݱݲݳ
+#prueba UTF-8 : ŵŸŹŽƓƔƕƖƗƘƙƚƛƜ, ѼѽѾѿҀҁ҂҃҄҅҆҇҈҉Ҋ , ݧݨݩݪݫݬݭݮݯݰݱݲݳ
 #prueba emoji :   🤲 🙌 👏 🙏 , 😀 😃 😄 😁 , 👯‍♀️ 👯 👯‍♂️
 
 
 
 Password =  'C0nTr@seÑ4'
 NewPass = 'NeWC0nTr@seÑ4'
-Mail = 'mfranciscoeg@hotmail.com'
+Mail = 'milenkoeg@hotmail.com'
 Nombre = 'Milenko'
 Apellido = 'Espinoza'
 Rut = '19.638.767-6'
@@ -26,31 +26,23 @@ año ='1998'
 
 
 
-def spawn_browser(n):
+def spawn_browser():
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--disable-popup-blocking")
     chrome_options.add_argument("--start-maximized")
     chrome_options.add_experimental_option("detach",True)
     driver = webdriver.Chrome(options=chrome_options)
-    if n==1:
-        driver.get('https://www.telepizza.es/')
-    if n==2:
-        driver.get("https://www.telepizza.es/")
-    
-    elif n==3 :
-        driver.get("https://www.telepizza.es/usuario/clave")
 
-    elif n==4 :
-        driver.get("https://www.telepizza.es/")
-    elif n==5 :
-        driver.get("https://www.telepizza.es/")
+    driver.get('https://www.telepizza.es/')
+
+
 
     time.sleep(5)
     return driver
 
-def Registrarse(n):
+def Registrarse():
 
-    driver = spawn_browser(n)
+    driver = spawn_browser()
     time.sleep(2)
 
     pyautogui.moveTo(1559, 132)
@@ -84,9 +76,9 @@ def Registrarse(n):
 
 
 
-def Iniciar_Sesion(n):
+def Iniciar_Sesion():
 
-    driver = spawn_browser(n)
+    driver = spawn_browser()
 
     time.sleep(2)
 
@@ -113,10 +105,15 @@ def Iniciar_Sesion(n):
 
 #driver.find_element_by_xpath('loginSubmit').click()
 
-def Restablecer_Contraseña(n):
+def Restablecer_Contraseña():
 
-    driver = spawn_browser(n)
+    driver = spawn_browser()
     time.sleep(2)
+
+    pyautogui.moveTo(1164, 532)
+    pyautogui.click()
+
+
     mail_recuperar = driver.find_element_by_id('ForgottenPasswordEmail')
     mail_recuperar.send_keys(Mail)
 
@@ -125,9 +122,9 @@ def Restablecer_Contraseña(n):
     pyautogui.moveTo(524, 498)
     pyautogui.click()
 
-def Modificar_Contraseña(n):
+def Modificar_Contraseña():
 
-    driver = spawn_browser(n)
+    driver = spawn_browser()
 
     time.sleep(2)
 
@@ -175,11 +172,11 @@ def Modificar_Contraseña(n):
     pyautogui.moveTo(917, 571)
     pyautogui.click()
 
-def  Fuerza_Bruta(n):
+def  Fuerza_Bruta():
     contador=0
-    driver = spawn_browser(n)
+    driver = spawn_browser()
 
-    time.sleep(2)
+    time.sleep(3)
 
     pyautogui.moveTo(1559, 132)
     pyautogui.click()
@@ -229,19 +226,19 @@ while True:
     n = int(input("ingrese la opcion que desea:  "))
     
     if n==1:
-        Registrarse(n)
+        Registrarse()
 
     elif n==2:
-        Iniciar_Sesion(n)
+        Iniciar_Sesion()
 
     elif n==3:
-        Restablecer_Contraseña(n)
+        Restablecer_Contraseña()
 
     elif n==4:
-        Modificar_Contraseña(n)
+        Modificar_Contraseña()
     
     elif n==5:
-        Fuerza_Bruta(n)
+        Fuerza_Bruta()
 
     elif n==6:
         break
